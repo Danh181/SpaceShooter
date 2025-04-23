@@ -57,22 +57,37 @@ namespace SpaceShooter
             this.FormBorderStyle = FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
 
-            scorelbl = new Label();
-            scorelbl.Location = new Point(10, 10);
-            scorelbl.Size = new Size(200, 30);
-            scorelbl.Text = "Score: 0"; 
-            scorelbl.Font = new Font("Arial", 14, FontStyle.Bold); 
-            scorelbl.ForeColor = Color.White; 
-            this.Controls.Add(scorelbl);
+            // Tạo panel để chứa các label
+            Panel infoPanel = new Panel();
+            infoPanel.Size = new Size(120, 60);
+            infoPanel.Location = new Point(10, 10);
+            infoPanel.BackColor = Color.Transparent; // hoặc Color.Black nếu bạn muốn nhìn rõ hơn
+            infoPanel.Enabled = false; // không tương tác chuột
 
-            // Khởi tạo Label level
+            // Tạo label điểm số
+            scorelbl = new Label();
+            scorelbl.AutoSize = true;
+            scorelbl.Font = new Font("Arial", 12, FontStyle.Bold);
+            scorelbl.ForeColor = Color.White;
+            scorelbl.Text = "00";
+            scorelbl.Location = new Point(10, 5);
+
+            // Tạo label level
             levellbl = new Label();
-            levellbl.Location = new Point(10, 40);
-            levellbl.Size = new Size(200, 30);
-            levellbl.Text = "Level: 1";
-            levellbl.Font = new Font("Arial", 14, FontStyle.Bold);
+            levellbl.AutoSize = true;
+            levellbl.Font = new Font("Arial", 12, FontStyle.Bold);
             levellbl.ForeColor = Color.White;
-            this.Controls.Add(levellbl);
+            levellbl.Text = "01";
+            levellbl.Location = new Point(10, 30);
+
+            // Thêm label vào panel
+            infoPanel.Controls.Add(scorelbl);
+            infoPanel.Controls.Add(levellbl);
+
+            // Thêm panel vào form và đưa ra trước
+            this.Controls.Add(infoPanel);
+            infoPanel.BringToFront();
+
 
 
             // Load images
